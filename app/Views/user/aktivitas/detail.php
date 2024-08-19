@@ -10,7 +10,6 @@
                 if (!empty($perusahaan)) {
                     echo ' ' . $perusahaan->nama_perusahaan;
                 } ?>
-                <span class="title-under"></span>
             </h1>
         <?php endforeach ?>
         <p class="text-white text-center">
@@ -26,13 +25,9 @@
     <div class="main-container">
         <div class="container">
             <?php foreach ($profil as $descper) : ?>
-                <div class="row g-5 align-items-center">
-                    <div class="col-lg-6 wow fadeInUp">
-                        <div class="position-relative h-100 d-flex justify-content-center">
-                            <img class="img-responsive lazyload" data-src="/asset-user/images/<?= $tbaktivitas->foto_aktivitas ?>" alt="Image placeholder">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 wow fadeInUp">
+                <div class="row align-items-center mb-5 flex-column-reverse flex-lg-row">
+                    <!-- Teks aktivitas -->
+                    <div class="col-lg-6 col-12 mb-4 mb-lg-0" style="margin-right: 0;">
                         <h2 class="title-style-2">
                             <b>
                                 <?php if (lang('Blog.Languange') == 'en') {
@@ -51,12 +46,40 @@
                             } ?>
                         </p>
                     </div>
+                    <!-- Gambar aktivitas -->
+                    <div class="col-lg-6 col-12">
+                        <div class="d-flex justify-content-center h-100">
+                            <img class="img-responsive lazyload" data-src="/asset-user/images/<?= $tbaktivitas->foto_aktivitas ?>" alt="Image placeholder">
+                        </div>
+                    </div>
                 </div>
             <?php endforeach ?>
         </div>
     </div>
 </div>
-<!-- /.detail-activities-reasons -->
+<!-- /.detail-product-reasons -->
 
+<style>
+    .container .row {
+        display: flex;
+        align-items: center;
+    }
+
+    .container img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: cover;
+    }
+
+    @media (max-width: 991px) {
+        .row.align-items-center {
+            flex-direction: column-reverse;
+        }
+
+        .container img {
+            margin-bottom: 20px;
+        }
+    }
+</style>
 
 <?= $this->endSection('content'); ?>

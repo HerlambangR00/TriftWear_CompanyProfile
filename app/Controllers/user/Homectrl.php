@@ -6,6 +6,7 @@ use App\Controllers\user\BaseController;
 use App\Models\ProfilModel;
 use App\Models\SliderModel;
 use App\Models\ProdukModel;
+use App\Models\ArtikelModel;
 
 
 class Homectrl extends BaseController
@@ -14,12 +15,14 @@ class Homectrl extends BaseController
     private $ProfilModel;
     private $SliderModel;
     private $ProdukModel;
+    private $ArtikelModel;
 
     public function __construct()
     {
         $this->ProfilModel = new ProfilModel();
         $this->SliderModel = new SliderModel();
         $this->ProdukModel = new ProdukModel();
+        $this->ArtikelModel = new ArtikelModel();
     }
 
     public function index()
@@ -28,6 +31,7 @@ class Homectrl extends BaseController
             'profil' => $this->ProfilModel->findAll(),
             'tbslider' => $this->SliderModel->findAll(),
             'tbproduk' => $this->ProdukModel->findAll(),
+            'artikelterbaru' => $this->ArtikelModel->getArtikelTerbaru(3),
         ];
 
         $data['Title'] = $data['profil'][0]->title_website;

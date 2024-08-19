@@ -2,7 +2,7 @@
 <?= $this->Section('content'); ?>
 
 <!-- Header Start -->
-<div class="page-heading-center text-center" style="display: flex; align-items: center; justify-content: center; background-image: url('<?= base_url('asset-user/images/hero_1.jpg'); ?>"">
+<div class="page-heading-center text-center" style="display: flex; align-items: center; justify-content: center; background-image: url('<?= base_url('asset-user/images/hero_1.jpg'); ?>');">
     <div class="container zoomIn animated">
         <?php foreach ($profil as $perusahaan) : ?>
             <h1 class="page-title">
@@ -10,7 +10,6 @@
                 if (!empty($perusahaan)) {
                     echo ' ' . $perusahaan->nama_perusahaan;
                 } ?>
-                <span class="title-under"></span>
             </h1>
         <?php endforeach ?>
         <p class="text-white text-center">
@@ -26,18 +25,19 @@
     <div class="main-container">
         <div class="container">
             <?php foreach ($profil as $descper) : ?>
-                <div class="row g-5 align-items-center">
-                    <div class="col-lg-6 wow fadeInUp">
-                        <div class="position-relative h-100 d-flex justify-content-center">
+                <div class="row align-items-center mb-5 flex-column flex-lg-row">
+                    <!-- Gambar produk -->
+                    <div class="col-12 col-lg-6 mb-4 mb-lg-0">
+                        <div class="d-flex justify-content-center align h-100">
                             <img class="img-responsive lazyload" data-src="/asset-user/images/<?= $tbproduk->foto_produk ?>" alt="<?php if (lang('Blog.Languange') == 'en') {
-                                                                                                                                        echo $tbproduk->nama_produk_en;
-                                                                                                                                    } ?>
-                                    <?php if (lang('Blog.Languange') == 'in') {
-                                        echo $tbproduk->nama_produk_in;
-                                    } ?>">
+                                                                                                                                                    echo $tbproduk->nama_produk_en;
+                                                                                                                                                } elseif (lang('Blog.Languange') == 'in') {
+                                                                                                                                                    echo $tbproduk->nama_produk_in;
+                                                                                                                                                } ?>" style="max-height: 100%; max-width: 100%; object-fit: cover;">
                         </div>
                     </div>
-                    <div class="col-lg-6 wow fadeInUp">
+                    <!-- Teks produk -->
+                    <div class="col-12 col-lg-6">
                         <h2 class="title-style-2">
                             <b>
                                 <?php if (lang('Blog.Languange') == 'en') {
@@ -62,5 +62,32 @@
     </div>
 </div>
 <!-- /.detail-product-reasons -->
+
+<style>
+    .container .row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    @media (min-width: 992px) {
+        .container .row {
+            flex-direction: row;
+        }
+    }
+
+    .container img {
+        max-width: 80%;
+        max-height: 90%;
+        object-fit: cover;
+        margin-bottom: 20px;
+    }
+
+    @media (min-width: 992px) {
+        .container img {
+            margin-bottom: 0;
+        }
+    }
+</style>
 
 <?= $this->endSection('content'); ?>

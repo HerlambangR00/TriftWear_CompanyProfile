@@ -112,7 +112,7 @@ a:hover, a:focus, a:active {
   font-size: 18px;
   padding: 20px 15px;
   border-bottom: 2px solid transparent;
-  color: #fff; /* Warna teks normal */
+  color: #185b91; /* Warna teks normal */
   transition: color 0.3s ease, border-bottom 0.3s ease; /* Transisi yang halus */
 }
 
@@ -287,7 +287,7 @@ a:hover, a:focus, a:active {
 .cause {
   padding-bottom: 15px;
   margin-bottom: 30px;
-  border: 1px solid #1f76bd;
+  
   -moz-transition: all, 0.3s;
   -o-transition: all, 0.3s;
   -webkit-transition: all, 0.3s;
@@ -318,11 +318,11 @@ a:hover, a:focus, a:active {
   margin-bottom: 15px;
   min-height: 115px;
 }
-.cause:hover {
+/* .cause:hover {
   background: #f0f0f0;
   color: #144d7b;
   border-color: #144d7b;
-}
+} */
 .carousel-control-prev,
 .carousel-control-next {
   background-color: rgba(0,0,0,0.3);
@@ -337,7 +337,7 @@ a:hover, a:focus, a:active {
 /* Team 
 ================================= */
 .team-member {
-  background: #1f76bd;
+  background: #7ebd1f;
   color: #fff;
   text-align: center;
   padding-bottom: 15px;
@@ -453,7 +453,7 @@ a:hover, a:focus, a:active {
   /* background: url('/asset-user/images/hero_1.jpg') no-repeat center; */
   background-size: cover;
   background-position: center;
-  min-height: 500px;
+  min-height: 300px;
   color: #fff;
   padding: 25px 15px;
   margin-bottom: 50px;
@@ -463,7 +463,7 @@ a:hover, a:focus, a:active {
   background-image: linear-gradient(rgba(24, 29, 56, .7), rgba(24, 29, 56, .7)), url('/asset-user/images/hero_4.jpg');
   /* background: url('/asset-user/images/hero_1.jpg') no-repeat center; */
   background-size: cover;
-  min-height: 500px;
+  min-height: 300px;
   color: #fff;
   padding: 25px 15px;
   margin-bottom: 50px;
@@ -578,7 +578,7 @@ form .alert {
   text-align: left;
   text-transform: uppercase;
   font-size: 26px;
-  margin-bottom: 25px;
+  margin-bottom: 45px;
 }
 .title-style-2 .title-under {
   display: block;

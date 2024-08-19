@@ -3,22 +3,22 @@
 
 <!-- Header Start -->
 <div class="page-heading-center text-center" style="display: flex; align-items: center; justify-content: center; background-image: url('<?= base_url('asset-user/images/hero_1.jpg'); ?>"">
-    <div class="container zoomIn animated">
-        <?php foreach ($profil as $perusahaan) : ?>
-            <h1 class="page-title">
-                <?php echo lang('Blog.titleOurContact');
-                if (!empty($perusahaan)) {
-                    echo ' ' . $perusahaan->nama_perusahaan;
-                } ?>
-                <span class="title-under"></span>
-            </h1>
-        <?php endforeach ?>
-        <p class="text-white text-center">
-            <a href="<?= base_url('/') ?>"><?php echo lang('Blog.headerHome'); ?></a>
-            <span class="mx-2">/</span>
-            <span><?php echo lang('Blog.headerContact');  ?></span>
-        </p>
-    </div>
+    <div class=" container zoomIn animated">
+    <?php foreach ($profil as $perusahaan) : ?>
+        <h1 class="page-title">
+            <?php echo lang('Blog.titleOurContact');
+            if (!empty($perusahaan)) {
+                echo ' ' . $perusahaan->nama_perusahaan;
+            } ?>
+
+        </h1>
+    <?php endforeach ?>
+    <p class="text-white text-center">
+        <a href="<?= base_url('/') ?>"><?php echo lang('Blog.headerHome'); ?></a>
+        <span class="mx-2">/</span>
+        <span style="color: #337ab7;"><?php echo lang('Blog.headerContact');  ?></span>
+    </p>
+</div>
 </div>
 <!-- Header End -->
 
