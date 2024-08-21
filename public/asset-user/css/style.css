@@ -36,7 +36,7 @@ a:hover, a:focus, a:active {
 .navbar-static-top {
   margin: 0;
   border: 0;
-  color: #fff;
+  color: #115c9b;
 }
 
 .navbar-top {
@@ -112,13 +112,13 @@ a:hover, a:focus, a:active {
   font-size: 18px;
   padding: 20px 15px;
   border-bottom: 2px solid transparent;
-  color: #185b91; /* Warna teks normal */
+  color: #fff; /* Warna teks normal */
   transition: color 0.3s ease, border-bottom 0.3s ease; /* Transisi yang halus */
 }
 
 .navbar-main li a:hover {
   color: #ffdd57; /* Warna teks saat hover */
-  border-bottom: 2px solid #ffdd57; /* Garis bawah saat hover */
+ 
 }
 
 
