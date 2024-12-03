@@ -21,7 +21,7 @@
                 <div class="row g-5 align-items-center flex-column flex-lg-row">
                     <div class="col-lg-5 col-md-6 wow fadeInUp">
                         <div class="position-relative h-100 d-flex justify-content-center">
-                            <img data-src="asset-user/images/<?= $descper->foto_utama; ?>"
+                            <img data-src="/asset-user/images/<?= $descper->foto_utama; ?>"
                                 alt="<?= $descper->nama_perusahaan; ?>"
                                 class="img-responsive lazyload w-100 h-auto">
                         </div>
