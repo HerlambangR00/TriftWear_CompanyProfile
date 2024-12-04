@@ -33,7 +33,7 @@
                 <div class="col-md-4 col-sm-6 d-flex align-items-stretch">
                     <div class="cause card">
                         <a href="<?= base_url('product/detail/' . $produk->id_produk . '/' . url_title($produk->nama_produk_en) . '_' . url_title($produk->nama_produk_in)) ?>">
-                            <img class="cause-img card-img-top lazyload" data-src="asset-user/images/<?= $produk->foto_produk; ?>" alt="<?php if (lang('Blog.Languange') == 'en') {
+                            <img class="cause-img card-img-top lazyload" data-src="/asset-user/images/<?= $produk->foto_produk; ?>" alt="<?php if (lang('Blog.Languange') == 'en') {
                                                                                                                                             echo $produk->nama_produk_en;
                                                                                                                                         } ?>
                                     <?php if (lang('Blog.Languange') == 'in') {
