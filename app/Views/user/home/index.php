@@ -316,7 +316,7 @@ $artikelterbaru = array_slice($artikelterbaru, 0, 3);
         <div class="row justify-content-center">
             <?php foreach ($artikelterbaru as $row) : ?>
                 <div class="col-lg-4 mb-4 d-flex align-items-stretch">
-                    <a href="<?= base_url('/artikel/detail/' . $row->id_artikel) ?>" class="text-decoration-none">
+                    <a href="<?= base_url(($locale !== '' ? $locale . '/' : '') . ($locale === 'en' ? 'articles' : 'artikel') . '/' . (($locale === 'en') ? $row->slug_en : $row->slug_in)) ?>" class="text-decoration-none">
                         <div class="card1 h-100 shadow-sm border-0">
                             <img class="card1-img-top img-fluid" src="<?= base_url('asset-user/images/' . $row->foto_artikel); ?>" alt="Artikel Image" loading="lazy">
                             <div class="card1-body">

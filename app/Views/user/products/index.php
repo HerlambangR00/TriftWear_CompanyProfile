@@ -41,7 +41,7 @@
                                     } ?>">
                         </a>
                         <div class="card-body text-center d-flex flex-column">
-                            <a href="<?= base_url('product/detail/' . $produk->id_produk . '/' . url_title($produk->nama_produk_en) . '_' . url_title($produk->nama_produk_in)) ?>" class="btn btn-primary mt-auto">
+                            <a href="<?= base_url($locale . '/' . ($locale === 'en' ? 'product' : 'produk') . '/' . (($locale === 'en') ? $produk->slug_en : $produk->slug_in)) ?>" class="btn btn-primary mt-auto">
                                 <?php if (lang('Blog.Languange') == 'en') {
                                     echo $produk->nama_produk_en;
                                 } ?>
