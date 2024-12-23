@@ -32,17 +32,17 @@
             <?php foreach ($tbaktivitas as $aktivitas) : ?>
                 <div class="col-md-4 col-sm-6">
                     <div class="cause card">
-                        <a href="<?= base_url('activities/detail/' . $aktivitas->id_aktivitas . '/' . url_title($aktivitas->nama_aktivitas_en) . '_' . url_title($aktivitas->nama_aktivitas_in)) ?>">
-                            <img data-src="asset-user/images/<?= $aktivitas->foto_aktivitas ?>" alt="Gambar Produk" class="cause-img lazyload">
+                        <a href="<?= base_url($locale . '/' . ($locale === 'en' ? 'activities' : 'aktivitas') . '/' . (($locale === 'en') ? $aktivitas->slug_en : $aktivitas->slug_in)) ?>">
+                            <img data-src="/asset-user/images/<?= $aktivitas->foto_aktivitas ?>" alt="Gambar Produk" class="cause-img lazyload">
                         </a>
                         <div class="card-body text-center">
-                            <a href="<?= base_url('activities/detail/' . $aktivitas->id_aktivitas . '/' . url_title($aktivitas->nama_aktivitas_en) . '_' . url_title($aktivitas->nama_aktivitas_in)) ?>" class="btn btn-primary">
-                                <?php if (lang('Blog.Languange') == 'en') {
-                                    echo $aktivitas->nama_aktivitas_en;
-                                } ?>
-                                <?php if (lang('Blog.Languange') == 'in') {
-                                    echo $aktivitas->nama_aktivitas_in;
-                                } ?>
+                            <a href="<?= base_url($locale . '/' . ($locale === 'en' ? 'activities' : 'aktivitas') . '/' . (($locale === 'en') ? $aktivitas->slug_en : $aktivitas->slug_in)) ?>" class="btn btn-primary">
+                            <?php if (lang('Blog.Languange') == 'en') {
+                                echo $aktivitas->nama_aktivitas_en;
+                            } ?>
+                            <?php if (lang('Blog.Languange') == 'in') {
+                                echo $aktivitas->nama_aktivitas_in;
+                            } ?>
                             </a>
                         </div>
                     </div> <!-- /.cause -->

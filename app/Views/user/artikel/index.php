@@ -35,7 +35,7 @@
         <div class="row">
             <?php foreach ($artikelterbaru as $row) : ?>
                 <div class="col-lg-4 mb-4">
-                    <a href="<?= base_url('/artikel/detail/' . $row->id_artikel) ?>" class="text-decoration-none">
+                    <a href="<?= base_url(($locale !== '' ? $locale . '/' : '') . ($locale === 'en' ? 'articles' : 'artikel') . '/' . (($locale === 'en') ? $row->slug_en : $row->slug_in)) ?>" class="text-decoration-none">
                         <div class="card h-100 shadow-sm border-0">
                             <img class="card-img-top img-fluid" src="<?= base_url('asset-user/images/' . $row->foto_artikel); ?>" alt="Artikel Image" loading="lazy">
                             <div class="card-body">
@@ -43,9 +43,9 @@
                                     <i class="far fa-calendar-alt"></i> <?= date('d F Y', strtotime($row->created_at)); ?>
                                 </div>
                                 <h5 class="card-title text-dark">
-                                    <?= strip_tags($row->judul_artikel) ?>
+                                <?= session('lang') === 'id' ? strip_tags($row->judul_artikel) : strip_tags($row->judul_artikel_en); ?>
                                 </h5>
-                                <p class="card-text text-muted"><?= substr(strip_tags($row->deskripsi_artikel), 0, 60) ?>...</p>
+                                <p class="card-text text-muted"><?= substr(strip_tags(session('lang') === 'id' ? $row->deskripsi_artikel : $row->deskripsi_artikel_en), 0, 50) ?>...</p>
                             </div>
                         </div>
                     </a>

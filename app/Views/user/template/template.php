@@ -1,95 +1,135 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html lang="id">
 
 <head>
-  <meta charset="utf-8">
-  <title>
-    <?php echo $Title; ?> | <?php foreach ($profil as $descper) : ?><?= $descper->nama_perusahaan; ?><?php endforeach; ?>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>
+    <?=
+      session()->get('lang') === 'id'
+      ? ($tbproduk->meta_title_id ?? $tbaktivitas->meta_title_id ?? $artikel->meta_title_id ?? $meta['meta_title_id'] ?? 'Judul Standar Bahasa Indonesia')
+      : ($tbproduk->meta_title_en ?? $tbaktivitas->meta_title_en ?? $artikel->meta_title_en ?? $meta['meta_title_en'] ?? 'Default English Title');
+    ?>
   </title>
-  <?php foreach ($profil as $perusahaan) : ?>
-    <link rel="shortcut icon" href="<?= base_url('asset-user/images/') ?><?= $perusahaan->favicon_website ?>">
-  <?php endforeach; ?>
-  <meta name="description" content="<?php echo $Meta; ?>" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Fonts -->
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Dosis:400,700' rel='stylesheet' type='text/css'>
+  <!-- Meta Tags -->
+  <meta name="title" content="<?= 
+        session()->get('lang') === 'id' 
+        ? ($tbproduk->meta_title_id ?? $tbaktivitas->meta_title_id ?? $artikel->meta_title_id ?? $meta['meta_title_id'] ?? 'Judul Standar Bahasa Indonesia') 
+        : ($tbproduk->meta_title_en ?? $tbaktivitas->meta_title_en ?? $artikel->meta_title_en ?? $meta['meta_title_en'] ?? 'Default English Title'); 
+    ?>">
+  <meta name="description" content="<?= 
+        session()->get('lang') === 'id' 
+        ? ($tbproduk->meta_description_id ?? $tbaktivitas->meta_description_id ?? $artikel->meta_description_id ?? $meta['meta_description_id'] ?? 'Deskripsi Standar Bahasa Indonesia') 
+        : ($tbproduk->meta_description_en ?? $tbaktivitas->meta_description_en ?? $artikel->meta_description_en ?? $meta['meta_description_en'] ?? 'Default English Description'); 
+  ?>">
 
-  <!-- Bootsrap -->
-  <link rel="stylesheet" href="<?= base_url('asset-user') ?>/css/bootstrap.min.css">
+    <!-- Favicon -->
+    <?php foreach ($profil as $perusahaan) : ?>
+        <link rel="shortcut icon" href="<?= base_url('asset-user/images/') ?><?= $perusahaan->favicon_website ?>">
+    <?php endforeach; ?>
 
-  <!-- Font awesome -->
-  <link rel="stylesheet" href="<?= base_url('asset-user') ?>/css/font-awesome.min.css">
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
 
-  <!-- Owl carousel -->
-  <link rel="stylesheet" href="<?= base_url('asset-user') ?>/css/owl.carousel.css">
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-  <!-- Template main Css -->
-  <link rel="stylesheet" href="<?= base_url('asset-user') ?>/css/style.css">
+    <!-- Libraries Stylesheet -->
+    <link href="<?= base_url('asset-user') ?>/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="<?= base_url('asset-user') ?>/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
-  <!-- Modernizr -->
-  <script src="<?= base_url('asset-user') ?>/js/modernizr-2.6.2.min.js"></script>
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="<?= base_url('asset-user') ?>/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Template Stylesheet -->
+    <link href="<?= base_url('asset-user') ?>/css/style.css" rel="stylesheet">
 </head>
 
 <body>
+    <!-- Header -->
+    <?= $this->include('user/layout/header'); ?>
 
-  <?= $this->include('user/layout/header'); ?>
+    <!-- Navbar -->
+    <?= $this->include('user/layout/nav'); ?>
 
-  <!-- render halaman konten -->
-  <?= $this->renderSection('content'); ?>
 
-  <!-- footer -->
-  <?= $this->include('user/layout/footer');  ?>
 
-  <!-- Icon Whatsapp -->
-  <div class="floating-container">
-    <div class="element-container">
-      <?php foreach ($profil as $iconwa) : ?>
-        <a class="whats-app" href="<?= $iconwa->link_whatsapp; ?>" target="">
-          <img src="<?= base_url('asset-user/images/whatsapp.png'); ?>" alt="Whatsapp" class="my-float" style="width: 60px; height:60px; padding: 10px; transition: background-color 0.3s ease-in-out;">
-        </a>
-      <?php endforeach ?>
-    </div>
-  </div>
+    <!-- render halaman konten -->
+    <?= $this->renderSection('content'); ?>
 
-  <!--  Scripts
-    ================================================== -->
-  <!-- jQuery -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Footer -->
+    <?= $this->include('user/layout/footer'); ?>
+
+    <!-- Back to top button -->
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+<!-- icon wa -->
+<?php foreach ($profil as $iconwa) : ?>
+  <a class="whats-app" href="<?= $iconwa->link_whatsapp ?>" target="_blank">
+    <img src="<?= base_url('asset-user/images/whatsapp.png'); ?>" alt="Whatsapp" width="44" height="44">
+  </a>
+<?php endforeach; ?>
+
+
+<!-- Pre Loader -->
+<div id="loader" class="show">
+  <div class="loader"></div>
+</div>
+
+    <style>
+        .whats-app:hover {
+            transform: scale(1.1);
+        }
+    </style>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= base_url('asset-user') ?>/lib/wow/wow.min.js"></script>
+    <script src="<?= base_url('asset-user') ?>/lib/easing/easing.min.js"></script>
+    <script src="<?= base_url('asset-user') ?>/lib/waypoints/waypoints.min.js"></script>
+    <script src="<?= base_url('asset-user') ?>/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="<?= base_url('asset-user') ?>/js/jquery-3.3.1.min.js"></script>
+    <script src="<?= base_url('asset-user') ?>/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="<?= base_url('asset-user') ?>/js/jquery-ui.js"></script>
+    <script src="<?= base_url('asset-user') ?>/js/popper.min.js"></script>
+    <script src="<?= base_url('asset-user') ?>/js/bootstrap.min.js"></script>
+    <script src="<?= base_url('asset-user') ?>/js/owl.carousel.min.js"></script>
+    <script src="<?= base_url('asset-user') ?>/js/jquery.stellar.min.js"></script>
+    <script src="<?= base_url('asset-user') ?>/js/jquery.countdown.min.js"></script>
+    <script src="<?= base_url('asset-user') ?>/js/bootstrap-datepicker.min.js"></script>
+    <script src="<?= base_url('asset-user') ?>/js/jquery.easing.1.3.js"></script>
+    <script src="<?= base_url('asset-user') ?>/js/aos.js"></script>
+    <script src="<?= base_url('asset-user') ?>/js/jquery.fancybox.min.js"></script>
+    <script src="<?= base_url('asset-user') ?>/js/jquery.sticky.js"></script>
+    <script src="<?= base_url('asset-user') ?>/js/jquery.mb.YTPlayer.min.js"></script>
+    <script src="<?= base_url('asset-user') ?>/js/lazysizes.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="<?= base_url('asset-user') ?>/js/main.js"></script>
+    <!-- ikon WhatsApp otomatis menghilang saat halaman digulir ke atas -->
   <script>
-    window.jQuery || document.write('<script src="assets/js/jquery-1.11.1.min.js"><\/script>')
+    // Ambil elemen ikon WhatsApp
+    var whatsAppIcon = document.querySelector('.whats-app');
+
+    // Tambahkan event listener ke peristiwa scroll
+    window.addEventListener('scroll', function() {
+      // Tentukan aturan kapan ikon harus ditampilkan atau disembunyikan
+      if (window.scrollY > 100) { // Ganti angka 100 dengan posisi scroll yang sesuai
+        // Tampilkan ikon WhatsApp
+        whatsAppIcon.style.display = 'block';
+      } else {
+        // Sembunyikan ikon WhatsApp
+        whatsAppIcon.style.display = 'none';
+      }
+    });
   </script>
-
-  <!-- Bootsrap javascript file -->
-  <script src="<?= base_url('asset-user') ?>/js/bootstrap.min.js"></script>
-
-  <!-- owl carouseljavascript file -->
-  <script src="<?= base_url('asset-user') ?>/js/owl.carousel.min.js"></script>
-
-  <!-- Template main javascript -->
-  <script src="<?= base_url('asset-user') ?>/js/main.js"></script>
-  <script src="<?= base_url('asset-user') ?>/js/lazysizes.min.js"></script>
-
-  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-  <script>
-    (function(b, o, i, l, e, r) {
-      b.GoogleAnalyticsObject = l;
-      b[l] || (b[l] =
-        function() {
-          (b[l].q = b[l].q || []).push(arguments)
-        });
-      b[l].l = +new Date;
-      e = o.createElement(i);
-      r = o.getElementsByTagName(i)[0];
-      e.src = '//www.google-analytics.com/analytics.js';
-      r.parentNode.insertBefore(e, r)
-    }(window, document, 'script', 'ga'));
-    ga('create', 'UA-XXXXX-X');
-    ga('send', 'pageview');
-  </script>
-
 </body>
 
 </html>
+
